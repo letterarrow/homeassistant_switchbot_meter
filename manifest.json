@@ -1,0 +1,8 @@
+{
+    "domain": "switchbot_meter",
+    "name": "SwitchBot Thermometer & Hygrometer",
+    "documentation": "https://github.com/letterarrow/homeassistant_switchbot_meter",
+    "dependencies": [],
+    "codeowners": ["@letterarrow"],
+    "requirements": []
+}

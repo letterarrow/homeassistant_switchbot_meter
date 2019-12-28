@@ -1,0 +1,1 @@
+"""Integration for SwitchBot Thermometer & Hygrometer"""
