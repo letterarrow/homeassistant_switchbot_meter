@@ -1,7 +1,33 @@
 """Platform for sensor integration."""
-from homeassistant.const import TEMP_CELSIUS
-from homeassistant.helpers.entity import Entity
+import voluptuous as vol
+from homeassistant.components.sensor import PLATFORM_SCHEMA
 
+from homeassistant.const import (
+    CONF_MAC,
+    CONF_MONITORED_CONDITIONS,
+    CONF_NAME,
+    CONF_TIMEOUT,
+    TEMP_CELSIUS,
+    TEMP_FAHRENHEIT,
+)
+from homeassistant.helpers.entity import Entity
+import homeassistant.helpers.config_validation as cv
+
+SENSOR_TYPES ={
+    "battery": [],
+    "temperature": [],
+    "humidity": []
+}
+
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
+    {
+        vol.Optional(CONF_NAME): cv.string,
+        vol.Required(CONF_MAC): cv.string,
+        vol.Required(CONF_MONITORED_CONDITIONS): vol.All(
+            cv.ensure_list, [vol.In(SENSOR_TYPES)]
+        )
+    }
+)
 
 def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the sensor platform."""
